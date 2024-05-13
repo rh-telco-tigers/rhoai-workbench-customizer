@@ -1,4 +1,5 @@
 base_image: quay.io/modh/odh-pytorch-notebook@sha256:8bd87f618fe98c714cf34b2540d5560d85fa657c7a64d1b7bdb8ef9201a22df7
 dockerSteps: "RUN pip install faker"
+notebookImageName: rhoai-workbench-customizer
 
 #  oc start-build build-using-helm   -n redhat-ods-applications

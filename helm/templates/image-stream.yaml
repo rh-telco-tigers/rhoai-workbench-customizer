@@ -2,19 +2,19 @@ apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   annotations:
-    opendatahub.io/notebook-image-creator: cloud-user
+    opendatahub.io/notebook-image-creator: pipeline
     opendatahub.io/notebook-image-desc: ""
-    opendatahub.io/notebook-image-name: {{ .Release.Name }}
+    opendatahub.io/notebook-image-name: {{ .Values.notebookImageName }}
     opendatahub.io/notebook-image-url: {{ .Values.base_image }}
     opendatahub.io/recommended-accelerators: '[]'
     meta.helm.sh/release-name: helm-release
     meta.helm.sh/release-namespace: redhat-ods-applications
   labels:
-    app.kubernetes.io/created-by: byon
+    app.kubernetes.io/created-by: pipeline
     opendatahub.io/dashboard: "true"
     opendatahub.io/notebook-image: "true"
     app.kubernetes.io/managed-by: Helm
-  name: {{ .Release.Name }}
+  name: {{ .Values.notebookImageName }}
   namespace: redhat-ods-applications
 spec:
   lookupPolicy:
@@ -30,6 +30,6 @@ spec:
     generation: 2
     importPolicy:
       importMode: Legacy
-    name: {{ .Release.Name }}
+    name: {{ .Values.notebookImageName }}
     referencePolicy:
       type: Source

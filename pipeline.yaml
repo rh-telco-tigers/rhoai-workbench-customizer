@@ -16,6 +16,9 @@ spec:
     - default: RUN pip install faker; RUN pip install calc
       name: DOCKER_STEPS
       type: string
+    - default: rhoai-workbench-customizer
+      name: NOTEBOOK_IMAGE_NAME
+      type: string
   tasks:
     - name: fetch-repository
       params:
@@ -44,7 +47,7 @@ spec:
         - name: release_namespace
           value: redhat-ods-applications
         - name: overwrite_values
-          value: 'base_image=$(params.BASE_IMAGE),dockerSteps=$(params.DOCKER_STEPS)'
+          value: 'base_image=$(params.BASE_IMAGE),dockerSteps=$(params.DOCKER_STEPS),notebookImageName=$(params.NOTEBOOK_IMAGE_NAME)'
         - name: values_file
           value: values.yaml
         - name: helm_image

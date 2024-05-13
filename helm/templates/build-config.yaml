@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Values.notebookImageName }}
   namespace: redhat-ods-applications
 spec:
   source:
@@ -22,4 +22,4 @@ spec:
     to:
       kind: ImageStreamTag
       namespace: redhat-ods-applications
-      name: '{{ .Release.Name }}:{{ .Release.Name }}'
+      name: '{{ .Values.notebookImageName }}:{{ .Values.notebookImageName }}'
