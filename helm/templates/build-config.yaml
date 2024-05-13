@@ -1,0 +1,25 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: {{ .Release.Name }}
+  namespace: redhat-ods-applications
+spec:
+  source:
+    type: Dockerfile
+    dockerfile: |-
+      FROM demo
+      {{- $dockerSteps := splitList ";" .Values.dockerSteps }}
+      {{- range $step := $dockerSteps }}
+      {{ $step }}
+      {{- end }}
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: '{{ .Values.base_image }}'
+  output:
+    to:
+      kind: ImageStreamTag
+      namespace: redhat-ods-applications
+      name: '{{ .Release.Name }}:{{ .Release.Name }}'
