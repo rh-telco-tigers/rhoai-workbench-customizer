@@ -10,7 +10,7 @@ metadata:
     meta.helm.sh/release-name: helm-release
     meta.helm.sh/release-namespace: redhat-ods-applications
   labels:
-    app.kubernetes.io/created-by: pipeline
+    app.kubernetes.io/created-by: byon
     opendatahub.io/dashboard: "true"
     opendatahub.io/notebook-image: "true"
     app.kubernetes.io/managed-by: Helm
