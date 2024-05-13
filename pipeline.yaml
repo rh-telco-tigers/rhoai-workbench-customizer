@@ -67,7 +67,7 @@ spec:
       params:
         - name: SCRIPT
           value: >-
-            oc start-build helm-upgrade-from-source  -n redhat-ods-applications
+            oc start-build $(params.NOTEBOOK_IMAGE_NAME)  -n redhat-ods-applications
             --follow
         - name: VERSION
           value: '4.13'
