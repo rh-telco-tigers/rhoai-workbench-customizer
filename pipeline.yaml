@@ -7,7 +7,7 @@ spec:
     - default: 'quay.io/modh/odh-pytorch-notebook@sha256:8bd87f618fe98c714cf34b2540d5560d85fa657c7a64d1b7bdb8ef9201a22df7'
       name: BASE_IMAGE
       type: string
-    - default: 'git@github.com:rh-telco-tigers/rhoai-workbench-customizer.git'
+    - default: 'https://github.com/rh-telco-tigers/rhoai-workbench-customizer.git'
       name: GIT_REPO
       type: string
     - default: main
