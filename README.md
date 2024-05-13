@@ -32,11 +32,17 @@ oc policy add-role-to-user edit system:serviceaccount:cicd-pipeline:pipeline -n 
 ```
 
 ### 4. Deploy the Pipeline
-Navigate to the directory containing `pipeline.yaml` and apply it to the `redhat-ods-applications` namespace:
+Apply `pipeline.yaml` to the `cicd-pipeline` namespace:
 ```
-oc apply -f pipeline.yaml -n redhat-ods-applications
+oc apply -f pipeline.yaml -n cicd-pipeline
 ```
-### 5. Trigger the Pipeline
+### 5. Deploy Task
 
+Apply `helm-upgrade-from-source.yaml` and `openshift-client.yaml` to the `cicd-pipeline` namespace.
+```
+oc apply -f tasks/helm-upgrade-from-source.yaml  -n cicd-pipeline
+oc apply -f tasks/openshift-client.yaml  -n cicd-pipeline
+```
 
+### 6. Trigger the pipeline from UI.
 
